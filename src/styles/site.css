@@ -120,6 +120,14 @@
 
 .scr-foot li { margin-bottom: 8px; font-size: 12px; opacity: 0.85; }
 
+.scr-foot-social { display: flex; flex-direction: row; gap: 16px; }
+
+.scr-foot-social li { margin-bottom: 0; opacity: 1; }
+
+.scr-foot-social a { color: rgba(255,252,235,0.6); display: flex; align-items: center; transition: color 0.3s; }
+
+.scr-foot-social a:hover { color: var(--orange); }
+
 .scr-foot address { font-style: normal; color: rgba(255,252,235,0.7); font-size: 12px; line-height: 1.7; }
 
 .scr-foot .bot {

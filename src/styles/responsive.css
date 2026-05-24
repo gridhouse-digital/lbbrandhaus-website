@@ -437,8 +437,12 @@
 
   .scr-foot { margin-top: 0 !important; padding: 0; }
   .scr-foot > .scr-main { padding: 50px 16px 24px; }
-  .scr-foot .top { grid-template-columns: 1fr; gap: 28px; padding-bottom: 28px; }
+  .scr-foot .top { grid-template-columns: 1fr 1fr; gap: 28px 16px; padding-bottom: 28px; }
+  /* Let's talk spans full width, Studio + Connect side by side, Visit spans full width */
+  .scr-foot .top > div:nth-child(1) { grid-column: 1 / -1; }
+  .scr-foot .top > div:nth-child(4) { grid-column: 1 / -1; }
   .scr-foot .word { font-size: 32px; }
-  .scr-foot .massive { font-size: 76px; margin-top: 24px; }
-  .scr-foot .bot { flex-direction: column; gap: 6px; align-items: flex-start; }
+  /* Massive wordmark on one line */
+  .scr-foot .massive { font-size: clamp(44px, 12vw, 76px); white-space: nowrap; overflow: hidden; margin-top: 24px; }
+  .scr-foot .bot { flex-direction: column; gap: 6px; align-items: center; text-align: center; }
 }
