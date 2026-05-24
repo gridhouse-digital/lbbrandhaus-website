@@ -1,0 +1,444 @@
+/* ─── Global overrides (all viewports) ─────────────────────────────────────── */
+
+.scr-nav {
+  padding: 0 !important;
+  display: block !important;
+  grid-template-columns: unset !important;
+  position: fixed !important;
+}
+
+.scr-nav .nav-book {
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.scr-studio-dark.scr-band > .scr-main {
+  max-width: none !important;
+}
+
+.scr-studio-dark.scr-band {
+  display: block !important;
+  grid-template-columns: unset !important;
+  padding: 0 !important;
+}
+
+.scr-studio-book.scr-band {
+  display: block !important;
+  grid-template-columns: unset !important;
+  padding: 0 !important;
+}
+
+.scr-work-header .work-link {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 3px;
+}
+
+.scr-work-header .work-link:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}
+
+/* ─── ≥769px (tablet-up) ────────────────────────────────────────────────────── */
+
+@media (min-width: 769px) {
+  .scr-hero {
+    padding: 56px 32px;
+  }
+
+  /* hero index aligned to hero padding */
+  .scr-hero .index {
+    left: 32px;
+    top: 28px;
+  }
+
+  .scr-work-header h2 {
+    font-size: 96px !important;
+  }
+
+  .scr-studio-dark__inner {
+    max-width: var(--site-max);
+  }
+}
+
+/* ─── ≤1280px ────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 1280px) {
+  .scr-nav__inner {
+    column-gap: 28px;
+  }
+
+  .scr-nav .scr-meta {
+    gap: 14px;
+    font-size: 9px;
+  }
+}
+
+/* ─── ≤1200px ────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 1200px) {
+  .scr-nav__inner {
+    padding-inline: 24px;
+  }
+
+  .scr-nav .nav-links {
+    gap: 18px;
+    font-size: 11px;
+  }
+
+  .scr-nav .nav-book {
+    padding: 8px 14px;
+    font-size: 10px;
+  }
+}
+
+/* ─── ≤1024px (tablet — hamburger appears) ───────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  :root {
+    --nav-height: 72px;
+  }
+
+  .scr-nav__inner {
+    padding: 14px 20px;
+    grid-template-columns: 1fr auto;
+    min-height: 72px;
+  }
+
+  .scr-nav .scr-meta { display: none; }
+  .scr-nav .nav-links { display: none !important; }
+  .scr-nav .nav-book {
+    display: inline-flex;
+    padding: 8px 14px;
+    font-size: 10px;
+  }
+  .scr-nav .ham {
+    display: block;
+    width: 24px;
+    height: 14px;
+    position: relative;
+  }
+  .scr-nav .ham span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 0.5px;
+    background: var(--ink);
+  }
+  .scr-nav .ham span:nth-child(1) { top: 3px; }
+  .scr-nav .ham span:nth-child(2) { top: 10px; }
+  .scr-nav .brand-mark .mark {
+    background: transparent !important;
+    width: 56px !important;
+    height: 44px !important;
+    border-radius: 0 !important;
+  }
+  .scr-nav .brand-mark .mark img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+  .scr-nav .brand-mark .name { display: none !important; }
+}
+
+/* ─── 769px–1024px (tablet intermediate) ─────────────────────────────────────
+   Fill the gap between mobile collapse (768px) and desktop layout (1025px+).
+   Grids reflow to 2 columns; font sizes step down but don't go full-mobile.
+──────────────────────────────────────────────────────────────────────────── */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  /* Hero: reduce font and tighten padding */
+  .scr-hero {
+    padding: 56px 24px 48px;
+    gap: 28px;
+    grid-template-columns: 1fr 1fr;
+    min-height: auto;
+  }
+  .scr-hero h1 { font-size: 72px; }
+  .scr-hero .index { top: 28px; left: 24px; }
+
+  /* Manifesto: single column at tablet */
+  .scr-manifesto {
+    grid-template-columns: 1fr;
+    padding: 72px 24px;
+    gap: 24px;
+  }
+  .scr-manifesto .lead { font-size: 30px; }
+
+  /* Services teaser: 2-column grid instead of 3 */
+  .scr-services-teaser { padding: 48px 24px 72px; }
+  .scr-services-teaser .head h2 { font-size: 56px; }
+  .scr-services-teaser .grid { grid-template-columns: repeat(2, 1fr); }
+  /* Last card (3rd) spans full width so it doesn't sit alone */
+  .scr-svc-card:last-child { grid-column: 1 / -1; border-right: none; border-top: 0.5px solid var(--rule); }
+
+  /* Work grid: 6-column base so span values halve naturally */
+  .scr-work { padding: 48px 24px 72px; }
+  .scr-work .head h2 { font-size: 56px !important; }
+  .scr-stats { grid-template-columns: repeat(2, 1fr) !important; }
+  .scr-stat { padding: 36px 28px; }
+  .scr-stat-num { font-size: 56px; }
+
+  /* Horizontal scroll work: keep horizontal but narrower cards */
+  .scr-work-card.large  { width: 360px !important; }
+  .scr-work-card.medium { width: 300px !important; }
+  .scr-work-card.small  { width: 260px !important; }
+
+  /* Studio dark: keep 2 columns but reduce gap */
+  .scr-studio-dark__inner {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+  }
+  .scr-studio-dark h2 { font-size: 60px; }
+
+  /* Service detail rows */
+  .scr-svc-detail { padding: 0 24px 72px; }
+  .scr-svc-detail .row { padding: 40px 28px 40px 0; }
+  .scr-svc-detail .row:nth-child(even) { padding: 40px 0 40px 28px; }
+  .scr-svc-detail .row h3 { font-size: 30px; }
+  .scr-svc-detail .row .num-display { font-size: 40px; }
+
+  /* Studio hero: shrink h1, keep gallery aspect */
+  .scr-studio-hero { padding: 56px 24px 40px; }
+  .scr-studio-hero h1 { font-size: 100px; }
+  .scr-studio-hero .gallery { aspect-ratio: 16/7; }
+
+  /* Studio includes: keep 2-col layout, tighten padding */
+  .scr-studio-includes { padding: 60px 24px; }
+  .scr-studio-includes h2 { font-size: 40px; }
+
+  /* Studio booking */
+  .scr-studio-book.scr-band > .scr-main { padding: 60px 24px !important; gap: 32px !important; }
+  .scr-studio-book h2 { font-size: 44px; }
+
+  /* Portfolio: 2-column intermediate grid */
+  .scr-port-hero { padding: 56px 24px 24px; }
+  .scr-port-hero h1 { font-size: 96px; }
+  .scr-port-grid { padding: 20px 24px 60px; }
+  .scr-port-grid .grid { grid-template-columns: repeat(6, 1fr) !important; gap: 16px !important; }
+  .scr-port-grid .p.l { grid-column: span 3; }
+  .scr-port-grid .p.m { grid-column: span 3; }
+  .scr-port-grid .p.s { grid-column: span 3; }
+  .scr-port-grid .p.t { grid-column: span 6; }
+  .scr-port-grid .p .fr { aspect-ratio: 4/5; }
+
+  /* Contact: keep 2-col but tighten */
+  .scr-contact-hero { padding: 56px 24px 0; }
+  .scr-contact-hero h1 { font-size: 96px; }
+  .scr-contact-hero .lede { font-size: 20px; }
+  .scr-contact-body { padding: 48px 24px 60px; gap: 32px; }
+
+  /* Footer: 2+2 column layout */
+  .scr-foot > .scr-main { padding: 60px 24px 24px; }
+  .scr-foot .top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .scr-foot .word { font-size: 36px; }
+  .scr-foot .massive { font-size: 110px; }
+}
+
+/* ─── ≤480px (small phones — hide "Book a session" pill) ─────────────────────── */
+
+@media (max-width: 480px) {
+  .scr-nav .nav-book { display: none !important; }
+  .scr-nav__inner { grid-template-columns: 1fr auto; gap: 0; }
+}
+
+/* ─── ≤768px (mobile) ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .scr-hero {
+    grid-template-columns: 1fr;
+    padding: 60px 16px 30px;
+    min-height: auto;
+    gap: 22px;
+  }
+  .scr-hero .index { top: 50px; left: 16px; font-size: 9px; }
+  .scr-hero h1 { font-size: 56px; margin-top: 18px; }
+  .scr-hero p { font-size: 13px; margin-top: 16px; }
+  .scr-hero .img-frame { aspect-ratio: 3/4; border-radius: 18px !important; overflow: hidden !important; }
+  .scr-hero-p-desktop { display: none; }
+  .scr-hero-p-mobile { display: block; }
+
+  .scr-ticker {
+    background: #153534 !important;
+    color: rgba(255, 252, 235, 0.85) !important;
+    border-color: rgba(255, 252, 235, 0.18) !important;
+    padding: 10px 0 !important;
+    display: block !important;
+    overflow: hidden !important;
+    font-size: 9px;
+  }
+  .scr-ticker .lb-track { gap: 28px; padding-left: 16px; animation-duration: 22s; }
+  .scr-ticker .lb-track > span { gap: 28px; }
+
+  .scr-manifesto {
+    grid-template-columns: 1fr;
+    padding: 50px 16px;
+    gap: 22px;
+  }
+  .scr-manifesto .lead { font-size: 24px; }
+  .scr-manifesto .body { font-size: 13px; max-width: 100%; }
+
+  /* Services teaser — padding restored so cards have edge breathing room */
+  .scr-services-teaser { padding: 40px 0 60px; }
+  .scr-services-teaser.scr-band { padding: 0; }
+  .scr-services-teaser.scr-band > .scr-main { padding: 40px 0 60px; }
+  .scr-services-teaser .head {
+    padding: 0 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+  .scr-services-teaser .head h2 { font-size: 48px; }
+  .scr-services-teaser .grid { grid-template-columns: 1fr; }
+  .scr-svc-card {
+    border-right: none;
+    border-top: none;
+    border-bottom: 0.5px solid var(--rule);
+    /* Fix: explicit horizontal padding so content doesn't touch the edge */
+    padding: 22px 16px;
+  }
+  .scr-svc-card:last-child { border-bottom: none; grid-column: auto; }
+  .scr-svc-card .img { aspect-ratio: 16/9; }
+
+  /* Stats strip — 2 columns on mobile */
+  .scr-stats {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .scr-stat { padding: 32px 16px; }
+  .scr-stat-num { font-size: 52px; }
+
+  /* Horizontal work section — disable pin/clip on mobile, show as vertical stack */
+  .scr-work-hscroll {
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .scr-work-viewport {
+    position: static !important;
+    height: auto !important;
+    clip-path: none !important;
+  }
+  .scr-work-track {
+    flex-direction: column !important;
+    transform: none !important;
+    gap: 0 !important;
+    height: auto !important;
+  }
+  .scr-work-header {
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    border-right: none !important;
+    border-bottom: 0.5px solid var(--rule);
+    padding: 32px 16px !important;
+    writing-mode: initial !important;
+  }
+  .scr-work-vtitle {
+    writing-mode: initial !important;
+    transform: none !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+  .scr-work-vtitle-text { font-size: 36px !important; }
+  .scr-work-port-link {
+    writing-mode: initial !important;
+    transform: none !important;
+    font-size: 11px !important;
+    padding-bottom: 0 !important;
+    align-self: flex-end !important;
+  }
+  .scr-work-card {
+    width: 100% !important;
+    height: auto !important;
+    border-right: none !important;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .scr-work-card.fill { border-right: none !important; }
+  .scr-work-card .frame {
+    height: 72vw !important;
+    max-height: 420px !important;
+    flex: none !important;
+  }
+
+  .scr-studio-dark.scr-band > .scr-main { padding: 0 !important; }
+  .scr-studio-dark__inner {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    padding-inline: 0;
+    min-height: auto;
+  }
+  .scr-studio-dark__inner .img-frame { aspect-ratio: 16/10 !important; max-height: 320px !important; min-height: auto; }
+  .scr-studio-dark__inner .img-frame img { min-height: auto; }
+  .scr-studio-dark__inner > .scr-studio-dark__copy,
+  .scr-studio-dark__inner > div:nth-child(2) { padding: 40px 16px !important; }
+  .scr-studio-dark h2 { font-size: 48px; }
+  .scr-studio-dark p { font-size: 13px; }
+
+  .scr-svc-detail { padding: 0 16px 60px; grid-template-columns: 1fr; }
+  .scr-svc-detail .row { padding: 32px 0 !important; border-right: none !important; }
+  .scr-svc-detail .row h3 { font-size: 28px; }
+  .scr-svc-detail .row .num-display { font-size: 36px; }
+  .scr-svc-detail .row .price-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  .scr-studio-hero { padding: 50px 16px 30px; }
+  .scr-studio-hero .top { grid-template-columns: 1fr; gap: 12px; }
+  .scr-studio-hero h1 { font-size: 76px; }
+  .scr-studio-hero .top .right { text-align: left; }
+  /* Fix: explicit column reset so gallery stacks correctly */
+  .scr-studio-hero .gallery {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+    aspect-ratio: auto;
+    gap: 8px;
+  }
+  .scr-studio-hero .gallery .big { grid-row: auto; aspect-ratio: 4/3; }
+  .scr-studio-hero .gallery > div:not(.big) { aspect-ratio: 16/9; }
+
+  .scr-studio-includes { grid-template-columns: 1fr; padding: 50px 16px; gap: 24px; }
+  .scr-studio-includes h2 { font-size: 36px; }
+  .scr-studio-includes ul { grid-template-columns: 1fr; }
+  .scr-studio-includes li:nth-child(2n) { padding-left: 0; border-left: none; }
+
+  .scr-studio-book.scr-band > .scr-main {
+    grid-template-columns: 1fr;
+    padding: 50px 16px;
+    gap: 24px;
+  }
+  .scr-studio-book h2 { font-size: 36px; }
+
+  .scr-port-hero { padding: 50px 16px 16px; }
+  .scr-port-hero h1 { font-size: 76px; }
+  .scr-port-hero .top { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .scr-port-grid { padding: 16px 16px 50px; }
+  .scr-port-grid .grid { grid-template-columns: 1fr !important; gap: 18px !important; }
+  .scr-port-grid .p.l,
+  .scr-port-grid .p.m,
+  .scr-port-grid .p.s,
+  .scr-port-grid .p.t { grid-column: span 1; }
+  .scr-port-grid .p .fr { aspect-ratio: 4/5; }
+
+  .scr-contact-hero { padding: 50px 16px 0; }
+  .scr-contact-hero h1 { font-size: 72px; }
+  .scr-contact-hero .lede { font-size: 17px; padding-bottom: 22px; }
+  .scr-contact-body { grid-template-columns: 1fr; padding: 30px 16px 50px; gap: 22px; }
+  .scr-contact-body .form-card { padding: 24px; }
+  .scr-contact-body .form-card .row2 { grid-template-columns: 1fr; gap: 4px; }
+
+  .scr-foot { margin-top: 0 !important; padding: 0; }
+  .scr-foot > .scr-main { padding: 50px 16px 24px; }
+  .scr-foot .top { grid-template-columns: 1fr; gap: 28px; padding-bottom: 28px; }
+  .scr-foot .word { font-size: 32px; }
+  .scr-foot .massive { font-size: 76px; margin-top: 24px; }
+  .scr-foot .bot { flex-direction: column; gap: 6px; align-items: flex-start; }
+}
