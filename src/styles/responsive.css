@@ -120,20 +120,27 @@
     font-size: 10px;
   }
   .scr-nav .ham {
-    display: block;
-    width: 24px;
-    height: 14px;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
   .scr-nav .ham span {
-    position: absolute;
-    left: 0;
-    right: 0;
+    display: block;
     height: 0.5px;
     background: var(--ink);
+    transition: width 0.3s;
   }
-  .scr-nav .ham span:nth-child(1) { top: 3px; }
-  .scr-nav .ham span:nth-child(2) { top: 10px; }
+  .scr-nav .ham span:nth-child(1) { width: 100%; }
+  .scr-nav .ham span:nth-child(2) { width: 70%; }
+  .scr-nav .ham span:nth-child(3) { width: 85%; }
+  .scr-nav .ham:hover span { width: 100%; }
   .scr-nav .brand-mark .mark {
     background: transparent !important;
     width: 56px !important;

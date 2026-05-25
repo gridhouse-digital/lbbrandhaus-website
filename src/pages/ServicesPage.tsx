@@ -50,7 +50,7 @@ export default function ServicesPage() {
             </span>
             .
           </h1>
-          <span className="mono">Index — 02 / Practice</span>
+          <span className="mono">Index — 02 / WHAT WE DO</span>
         </div>
       </div>
 

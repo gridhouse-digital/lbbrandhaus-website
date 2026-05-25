@@ -94,6 +94,8 @@ function PortfolioCard({
   const handleMouseLeave = () => {
     const el = cardRef.current
     if (!el) return
+    qtX.current = null
+    qtY.current = null
     gsap.to(el, { rotateX: 0, rotateY: 0, scale: 1, z: 0, duration: 0.5, ease: 'power3.out' })
     gsap.to(arrowRef.current, { opacity: 0, y: 6, duration: 0.25, ease: 'power2.in' })
   }
@@ -135,7 +137,10 @@ function PortfolioCard({
         onClick={(e) => { e.stopPropagation(); handleClick() }}
         aria-label={`View ${proj.name}`}
       >
-        ↗
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="2" y1="12" x2="12" y2="2" />
+          <polyline points="4,2 12,2 12,10" />
+        </svg>
       </button>
     </div>
   )

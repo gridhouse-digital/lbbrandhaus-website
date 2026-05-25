@@ -54,9 +54,9 @@ export function Nav({ onMenuOpen }: NavProps) {
             ))}
           </ul>
 
-          <Link className="nav-book" to="/contact">
-            Book a session →
-          </Link>
+          <a className="nav-book" href="https://lbbrandhaus.nuvoro.net/business/lbbrandhaus" target="_blank" rel="noopener noreferrer">
+            Book now →
+          </a>
 
           <button
             type="button"
@@ -64,6 +64,7 @@ export function Nav({ onMenuOpen }: NavProps) {
             aria-label="Open menu"
             onClick={onMenuOpen}
           >
+            <span />
             <span />
             <span />
           </button>

@@ -69,7 +69,7 @@ export const bookingCopy = {
   index: '— Index 05 / Reserve a slot',
   headline: 'Book the Haus.',
   body: 'Pick a date, choose your hours, and you\'re booked. Cancellations free up to 48 hours before. Same-day rates available for urgent shoots — get in touch.',
-  primaryCta: 'Continue to checkout →',
+  primaryCta: 'Book a session →',
   secondaryCta: 'Email us instead',
 }
 

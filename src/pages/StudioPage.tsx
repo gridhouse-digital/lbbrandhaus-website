@@ -16,31 +16,31 @@ import {
   studioHero,
 } from '../data/studio'
 import { contactInfo } from '../data/site'
+import VideoExpand from '../components/VideoExpand'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function StudioPage() {
   const galleryRef = useRef<HTMLDivElement>(null)
   const includesRef = useRef<HTMLDivElement>(null)
+  const bigRef = useRef<HTMLDivElement>(null)
+  const [videoRect, setVideoRect] = useState<DOMRect | null>(null)
 
   // Gallery entrance: big image slides up, thumbnails stagger from right
   useGSAP(() => {
-    const ctx = gsap.context(() => {
-      gsap.from('.scr-studio-hero .top', {
-        scrollTrigger: { trigger: '.scr-studio-hero', start: 'top 85%' },
-        opacity: 0, y: 20, duration: 0.7, ease: 'power2.out',
-      })
-      gsap.from('.scr-studio-hero .gallery .big', {
-        scrollTrigger: { trigger: galleryRef.current, start: 'top 80%' },
-        opacity: 0, y: 40, duration: 1.0, ease: 'power3.out',
-      })
-      gsap.from('.scr-studio-hero .gallery > div:not(.big)', {
-        scrollTrigger: { trigger: galleryRef.current, start: 'top 78%' },
-        opacity: 0, x: 30, duration: 0.7, stagger: 0.1, ease: 'power2.out',
-      })
-    }, galleryRef)
-    return () => ctx.revert()
-  }, { scope: galleryRef })
+    gsap.from('.scr-studio-hero .top', {
+      scrollTrigger: { trigger: '.scr-studio-hero', start: 'top 85%' },
+      opacity: 0, y: 20, duration: 0.7, ease: 'power2.out',
+    })
+    gsap.from('.scr-studio-hero .gallery .big', {
+      scrollTrigger: { trigger: galleryRef.current, start: 'top 80%' },
+      opacity: 0, y: 40, duration: 1.0, ease: 'power3.out',
+    })
+    gsap.from('.scr-studio-hero .gallery > div:not(.big)', {
+      scrollTrigger: { trigger: galleryRef.current, start: 'top 78%' },
+      opacity: 0, x: 30, duration: 0.7, stagger: 0.1, ease: 'power2.out',
+    })
+  })
 
   // Amenities list stagger
   useGSAP(() => {
@@ -105,8 +105,21 @@ export default function StudioPage() {
           </div>
         </div>
         <div className="gallery" ref={galleryRef}>
-          <div className="big">
-            <img src={galleryImages[0]} alt="" />
+          <div
+            className="big"
+            ref={bigRef}
+            onClick={() => { if (bigRef.current) setVideoRect(bigRef.current.getBoundingClientRect()) }}
+          >
+            <div className="studio-video-thumb">
+              <video src="/assets/studio/welcome.mp4" muted playsInline preload="metadata" />
+              <div className="play-btn">
+                <div className="play-icon">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="var(--ink)">
+                    <polygon points="4,2 14,8 4,14" />
+                  </svg>
+                </div>
+              </div>
+            </div>
           </div>
           {galleryImages.slice(1).map((src, i) => (
             <div key={`${src}-${i}`}>
@@ -228,6 +241,14 @@ export default function StudioPage() {
         </div>
         </div>
       </div>
+
+      {videoRect && (
+        <VideoExpand
+          src="/assets/studio/welcome.mp4"
+          originRect={videoRect}
+          onClose={() => setVideoRect(null)}
+        />
+      )}
     </>
   )
 }

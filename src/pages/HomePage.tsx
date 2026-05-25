@@ -43,7 +43,12 @@ function HomeWorkCard({ proj, onExpand }: {
           <h4>{proj.name}</h4>
           <span className="cat">{proj.category}</span>
         </div>
-        <span className="arrow">↗</span>
+        <span className="arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="2" y1="12" x2="12" y2="2" />
+            <polyline points="4,2 12,2 12,10" />
+          </svg>
+        </span>
       </div>
     </div>
   )
