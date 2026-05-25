@@ -164,21 +164,33 @@ export default function HomePage() {
     const track = workTrackRef.current
     if (!section || !track) return
 
+    // Mobile/landscape-phone: CSS collapses to vertical stack — skip JS entirely
+    const isMobileLayout = () =>
+      window.innerWidth <= 768 ||
+      (window.innerWidth <= 1024 && window.innerHeight <= 500)
+
     const getDistance = () => track.scrollWidth - window.innerWidth
 
     const setHeight = () => {
+      if (isMobileLayout()) {
+        section.style.height = ''
+        return
+      }
       section.style.height = `${getDistance() + window.innerHeight}px`
     }
+
+    if (isMobileLayout()) return
+
     setHeight()
     window.addEventListener('resize', setHeight)
 
     gsap.to(track, {
-      x: () => -getDistance(),
+      x: () => (isMobileLayout() ? 0 : -getDistance()),
       ease: 'none',
       scrollTrigger: {
         trigger: section,
         start: 'top top',
-        end: () => `+=${getDistance()}`,
+        end: () => `+=${isMobileLayout() ? 0 : getDistance()}`,
         scrub: 1,
         invalidateOnRefresh: true,
         onRefresh: setHeight,

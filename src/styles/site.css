@@ -248,6 +248,7 @@
   /* height set by JS */
   position: relative;
   border-top: 0.5px solid var(--rule);
+  overflow-x: hidden;
 }
 
 /* The sticky viewport — this is what stays on screen */
